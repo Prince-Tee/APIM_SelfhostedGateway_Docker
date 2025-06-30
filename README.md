@@ -16,7 +16,7 @@
 * In the **Azure Portal**, create a new **API Management (APIM)** instance using the **Developer SKU**—required for self-hosted gateway setup.
 * Wait for the deployment to complete.
 
-> *📸 Insert screenshot here*
+> *![screenhot](https://github.com/Prince-Tee/APIM_SelfhostedGateway_Docker/blob/main/screenshot%20from%20my%20environment/shgw1.jpg)*
 
 ---
 
@@ -24,12 +24,12 @@
 
 * Created a Virtual Machine (VM) on Azure.
 
-> *📸 Insert screenshot here*
+> ![*📸 Insert screenshot here* ](https://github.com/Prince-Tee/APIM_SelfhostedGateway_Docker/blob/main/screenshot%20from%20my%20environment/shgw2.jpg)
 
 * For testing, opened required ports to allow traffic from any source (⚠️ Not recommended for production).
 
-> *📸 Insert screenshot here*
-
+> ![*📸 Insert screenshot here*](https://github.com/Prince-Tee/APIM_SelfhostedGateway_Docker/blob/main/screenshot%20from%20my%20environment/shgw3.jpg)
+![*📸 Insert screenshots here*](https://github.com/Prince-Tee/APIM_SelfhostedGateway_Docker/blob/main/screenshot%20from%20my%20environment/shgw4.jpg)
 ---
 
 ### 3. Purchase and Configure Custom Domain
@@ -38,7 +38,9 @@
 * Added a **DNS A Record** to point the domain to the VM’s **public IP address**:
   *Azure Portal > Manage DNS records > Record sets > Add A record*
 
-> *📸 Insert screenshots here*
+![*📸 Insert screenshots here*](https://github.com/Prince-Tee/APIM_SelfhostedGateway_Docker/blob/main/screenshot%20from%20my%20environment/shgw5.jpg)
+![*📸 Insert screenshots here*](https://github.com/Prince-Tee/APIM_SelfhostedGateway_Docker/blob/main/screenshot%20from%20my%20environment/shgw6.jpg)
+![*📸 Insert screenshots here*](https://github.com/Prince-Tee/APIM_SelfhostedGateway_Docker/blob/main/screenshot%20from%20my%20environment/shgw7.jpg)
 
 ---
 
@@ -56,15 +58,17 @@ openssl pkcs12 -export \
   -name taiwoai2
 ```
 
-> *📸 Insert screenshots here*
-
+> ![*📸 Insert screenshots here*](https://github.com/Prince-Tee/APIM_SelfhostedGateway_Docker/blob/main/screenshot%20from%20my%20environment/shgw8.jpg)
+![*📸 Insert screenshots here*](https://github.com/Prince-Tee/APIM_SelfhostedGateway_Docker/blob/main/screenshot%20from%20my%20environment/shgw9.jpg)
 ---
 
 ### 5. Create a Self-Hosted Gateway
 
 * In **APIM > Gateways**, click **+ Add**, provide a name (e.g., `taiwo`), and associate the gateway with desired APIs.
 
-> *📸 Insert screenshots here*
+> ![*📸 Insert screenshots here*](https://github.com/Prince-Tee/APIM_SelfhostedGateway_Docker/blob/main/screenshot%20from%20my%20environment/shgw10.jpg)
+![*📸 Insert screenshots here*](https://github.com/Prince-Tee/APIM_SelfhostedGateway_Docker/blob/main/screenshot%20from%20my%20environment/shgw11.jpg)
+![*📸 Insert screenshots here*](https://github.com/Prince-Tee/APIM_SelfhostedGateway_Docker/blob/main/screenshot%20from%20my%20environment/shgw12.jpg)
 
 ---
 
@@ -73,10 +77,11 @@ openssl pkcs12 -export \
 * Go to **APIM > Custom Domains** and add your domain under the **Gateway Endpoint** section.
 * Upload the `.pfx` certificate and bind it to the custom hostname.
 
-> *📸 Insert screenshots here*
+> ![*📸 Insert screenshots here*](https://github.com/Prince-Tee/APIM_SelfhostedGateway_Docker/blob/main/screenshot%20from%20my%20environment/shgw13.jpg)
 
 * Navigate to your API > Settings > Gateway, and switch from "Managed" to the newly created gateway.
 
+ ![*📸 Insert screenshots here*](https://github.com/Prince-Tee/APIM_SelfhostedGateway_Docker/blob/main/screenshot%20from%20my%20environment/shgw16.jpg)
 ---
 
 ### 7. Upload SSL Certificate to Azure
@@ -84,6 +89,8 @@ openssl pkcs12 -export \
 * Uploaded the `.pfx` file under **APIM > Certificates**.
 * Associated the uploaded certificate with the custom domain in **Custom Domains** > Gateway section.
 
+ ![*📸 Insert screenshots here*](https://github.com/Prince-Tee/APIM_SelfhostedGateway_Docker/blob/main/screenshot%20from%20my%20environment/shgw14.jpg)
+ ![*📸 Insert screenshots here*](https://github.com/Prince-Tee/APIM_SelfhostedGateway_Docker/blob/main/screenshot%20from%20my%20environment/shgw13.jpg)
 ---
 
 ### 8. Configure Gateway Settings & Docker Environment
@@ -104,7 +111,7 @@ docker run -d \
   mcr.microsoft.com/azure-api-management/gateway:v2
 ```
 
-> *📸 Insert screenshot of running container*
+> ![*📸 Insert screenshot of running container*](https://github.com/Prince-Tee/APIM_SelfhostedGateway_Docker/blob/main/screenshot%20from%20my%20environment/shgw17.jpg)
 
 ---
 
@@ -135,7 +142,7 @@ PUT https://management.azure.com/subscriptions/{subId}/resourceGroups/{rg}/provi
 > ⚠️ Improper configuration can prevent certificate validation inside Docker runtime.
 
 **Validation:**
-
+Run:
 ```bash
 docker logs taiwo | grep CertificateAddedToStore
 ```
@@ -146,7 +153,9 @@ docker logs taiwo | grep CertificateAddedToStore
 
 * Verified APIs via Postman using HTTP, HTTPS, the VM’s Public IP, and the domain name.
 
-> *📸 Insert Postman screenshots here*
+> ![*📸 Insert Postman screenshots here*](https://github.com/Prince-Tee/APIM_SelfhostedGateway_Docker/blob/main/screenshot%20from%20my%20environment/shgw18.jpg)
+ ![*📸 Insert screenshots here*](https://github.com/Prince-Tee/APIM_SelfhostedGateway_Docker/blob/main/screenshot%20from%20my%20environment/shgw19.jpg)
+  ![*📸 Insert screenshots here*](https://github.com/Prince-Tee/APIM_SelfhostedGateway_Docker/blob/main/screenshot%20from%20my%20environment/shgw20.jpg)
 
 * Confirmed certificate installation and container logs:
 
@@ -160,7 +169,7 @@ docker logs -f taiwo | grep CertificateAddedToStore
 curl -vk https://taiwoai2.com
 ```
 
-> *📸 Insert screenshot of `curl` test*
+> ![*📸 Insert screenshot of `curl` test*](https://github.com/Prince-Tee/APIM_SelfhostedGateway_Docker/blob/main/screenshot%20from%20my%20environment/shgw21.jpg)
 
 ---
 
