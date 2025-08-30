@@ -173,7 +173,7 @@ curl -vk https://taiwoai2.com
 
 ---
 
-## ❌ Errors Encountered & ✅ Resolutions
+## ❌ Errors Encountered & ✅ Resolution
 
 | Error                                                      | Cause                               | Solution                                                |
 | ---------------------------------------------------------- | ----------------------------------- | ------------------------------------------------------- |
