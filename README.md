@@ -1,6 +1,6 @@
 # Self-Hosted Gateway with Azure API Management using Docker and SSL
 
-## 🚧 Prerequisites
+## 🚧 Prerequisite
 
 * An **Azure subscription**
 * **Docker** installed on a virtual machine (Linux or Windows)
