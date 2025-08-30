@@ -1,4 +1,4 @@
-# Self-Hosted Gateway with Azure API Management using Docker and SS
+# Self-Hosted Gateway with Azure API Management using Docke and SS
 
 ## 🚧 Prerequisites
 
